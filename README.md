@@ -27,3 +27,53 @@ docker-web-scraper/
 - naučit se používat Docker Compose
 - ukázat komunikaci mezi více službami
 - procvičit nasazení jednoduché webové aplikace v Pythonu
+
+
+```mermaid
+ title Web Scraper – Docker aplikace s Redis cache
+
+    participant Dev
+    participant Docker
+    participant Flask 
+    participant Redis 
+    participant User 
+    participant Target 
+
+
+    Dev->>Dev: Vytvoření app.py
+    Dev->>Dev: Vytvoření Dockerfile
+    note over Dev: FROM python:3.10-slim<br>RUN pip install flask redis<br>CMD ["python", "app.py"]
+
+    Dev->>Docker: docker-compose up
+    activate Docker
+
+    Docker->>Docker: Build image aplikace (Flask)
+    Docker->>Redis: Spustí Redis container
+    Docker->>Flask: Spustí Flask container
+    Docker-->>Dev: Aplikace běží (port 5000)
+
+    deactivate Docker
+
+
+    User->>Flask: Zadá URL a klikne na „Diagnostikovat“
+    activate Flask
+
+    Flask->>Redis: Dotaz na cache (URL)
+    alt Data nalezena v cache
+        Redis-->>Flask: Vrací uložený výsledek
+        Flask-->>User: Vrací výsledek (rychlá odpověď)
+    else Cache miss
+        Redis-->>Flask: Cache prázdná
+        Flask->>Target: HTTP GET / HEAD requesty
+        Target-->>Flask: HTML a HTTP hlavičky
+        Flask->>Flask: Analýza HTML (BeautifulSoup)\n→ obrázky a jejich velikosti
+        Flask->>Redis: Uloží výsledek do cache
+        Flask-->>User: Vrací výsledky\n(čas načtení, hlavičky, počet obrázků)
+    end
+
+    deactivate Flask
+
+
+    Dev->>Docker: Sleduje docker ps, docker logs, docker stop
+    Docker-->>Dev: Umožní opakovatelné nasazení na jiném PC
+```
