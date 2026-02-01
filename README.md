@@ -30,8 +30,9 @@ docker-web-scraper/
 
 
 ```mermaid
- title Web Scraper – Docker aplikace s Redis cache
+sequenceDiagram
 
+    title Web Scraper – Docker aplikace s Redis cache
     participant Dev
     participant Docker
     participant Flask 
