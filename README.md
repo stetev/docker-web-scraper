@@ -1,7 +1,7 @@
 # Docker Web Scraper
 
 Tento projekt ukazuje jednoduchou webovou aplikaci vytvořenou pomocí **Dockeru**, **Flasku** a **Redis**.  
-Cílem projektu je demonstrovat, jak lze aplikaci zabalit do kontejnerů a spouštět ji konzistentně na různých počítačích bez ohledu na lokální prostředí (v rámci předmětu *Moderní algoritmy*).
+Cílem projektu je demonstrovat, jak lze aplikaci zabalit do kontejnerů a spouštět ji konzistentně na různých počítačích bez ohledu na lokální prostředí (v rámci předmětu *Moderní algoritmy*). Původní skript vznikl v rámci předmětu operační systémy a společností WEDOS.
 
 ## Struktura projektu
 ```text
