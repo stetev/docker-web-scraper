@@ -21,13 +21,7 @@ docker-web-scraper/
 - Docker Compose zajišťuje spuštění a propojení obou služeb.
 - Aplikace může ukládat a číst data z databáze Redis.
 
-## Cíl
-
-- porozumět principům Dockeru (image, container)
-- naučit se používat Docker Compose
-- ukázat komunikaci mezi více službami
-- procvičit nasazení jednoduché webové aplikace v Pythonu
-
+[Dokumentace projektu](moderni_alg_stetinova.pdf)
 
 ```mermaid
 sequenceDiagram
