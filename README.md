@@ -21,7 +21,7 @@ docker-web-scraper/
 - Docker Compose zajišťuje spuštění a propojení obou služeb.
 - Aplikace může ukládat a číst data z databáze Redis.
 
-[Dokumentace projektu](moderni_alg_stetinova.pdf)
+[Dokumentace projektu](doc.md)
 
 ```mermaid
 sequenceDiagram
